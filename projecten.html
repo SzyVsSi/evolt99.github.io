@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.3.1.slim.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -52,7 +53,7 @@
                     </ul>
                 </div>
             </div>
-            <img class="card-img-right flex-auto d-none d-md-block" style="width: 400px; height: 21.85rem;" src="images/web3.PNG" alt="szymon-nidecki [200x250]">
+            <img class="card-img-right flex-auto d-none d-md-block" style="width: 400px; height: 21.85rem;" src="images/web3.PNG" alt="szymon-nidecki [200x250]" id="web3" onclick="openModal('web3')">
         </div>
         <!-- WEB4 -->
         <div class="card flex-md-row mb-4 box-shadow h-md-250 bg-transparent text-white shadow">
@@ -69,7 +70,7 @@
                     </ul>
                 </div>
             </div>
-            <img class="card-img-right flex-auto d-none d-md-block" style="width: 400px; height: 19.9rem;" src="images/web4.jpg" alt="szymon-nidecki [200x250]">
+            <img class="card-img-right flex-auto d-none d-md-block" style="width: 400px; height: 19.9rem;" src="images/web4.jpg" alt="szymon-nidecki [200x250]" id="web4" onclick="openModal('web4')">
         </div>
         <!-- OOO -->
         <div class="card flex-md-row mb-4 box-shadow h-md-250 bg-transparent text-white shadow">
@@ -85,9 +86,15 @@
                     </ul>
                 </div>
             </div>
-            <img class="card-img-right flex-auto d-none d-md-block" style="width: 400px; height: 18.1rem;" src="images/OOO.PNG" alt="szymon-nidecki [200x250]">
+            <img class="card-img-right flex-auto d-none d-md-block" style="width: 400px; height: 18.1rem;" src="images/OOO.PNG" alt="szymon-nidecki [200x250]" id="ooo" onclick="openModal('ooo')">
         </div>
     </div>
+
+</div>
+<div id="imgModal" class="modal">
+    <span class="close">&times;</span>
+    <img id="projectModal" alt="DLR2 Szymon Nidecki" class="modal-content">
+    <div id="caption"></div>
 </div>
 <footer class="footer text-center bg-transparent pt-5 mb-5 lead text-white">
     <span class="bg-transparent">Copyright &#169; Szymon Nidecki (2021-2022)</span>
@@ -102,6 +109,25 @@
             }
         });
     });
+    function openModal(id) {
+        var modal = document.getElementById("imgModal");
+
+        var img = document.getElementById(id);
+        var modalImg = document.getElementById("projectModal");
+        var captionText = document.getElementById("caption");
+
+        img.onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+
+        var span = document.getElementsByClassName("close")[0];
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    }
 </script>
 
 </body>
